@@ -1,0 +1,30 @@
+---
+title: "linear"
+author: "mengyuanwang"
+date: "5/17/2017"
+output: html_document
+---
+```{r}
+score=read.csv("/Users/wangmengyuan/Desktop/bigdata/score.csv")
+# str(score)
+score$price= as.numeric(sub('$','',as.character(score$price),fixed = TRUE))
+score$extra_people= as.numeric(sub('$','',as.character(score$extra_people),fixed = TRUE))
+set.seed(12345)
+score$host_identity_verified=as.numeric(score$host_identity_verified)
+score$property_type=as.numeric(score$property_type)
+score$room_type=as.numeric(score$room_type)
+score$cancellation_policy=as.numeric(score$cancellation_policy)
+data=score[,-1]
+write.csv(data,file="/Users/wangmengyuan/Desktop/rr/score.csv")
+
+# # nrow(data)
+# data=data[complete.cases(data),]
+# n=nrow(data)
+# train<-sample(n,(0.7*n))
+# score_t<-data[train,]
+# score_v<-data[-train,]
+# #write.table(score_t, "/Users/wangmengyuan/Desktop/bigdata/score_t.txt", sep="\t")
+# write.csv(score_t,file="/Users/wangmengyuan/Desktop/bigdata/score_t.csv")
+# write.csv(score_v,file="/Users/wangmengyuan/Desktop/bigdata/score_v.csv")
+```
+
